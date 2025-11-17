@@ -161,7 +161,8 @@ def main():
     # st.markdown("<hr style='border: 1px solid #fecaca; margin: 30px 0;'>", unsafe_allow_html=True)
     
     st.markdown(
-        "<p style='text-align:center; color:#6b7280; font-size:1.8rem; font-weight: 600;'>Location: Dar Zumuruda Mirage Hall</p>",
+        """<p style='text-align:center; color:#6b7280; font-size:1.8rem; font-weight: 600;'>Location: Dar Zumuruda Mirage Hall.</p><br>
+        <center><p>location at google map.</p></center>""",
         unsafe_allow_html=True
     )
     
@@ -221,4 +222,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
