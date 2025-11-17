@@ -29,6 +29,58 @@ def format_metric(col, value, label, emoji=""):
 
 # --- Main App ---
 def main():
+    st.markdown(
+    """
+    <style>
+    body {
+        background-color: #fff0f5;  /* soft wedding background */
+    }
+    h1, h3, p {
+        text-align: center;
+    }
+
+    /* Make images responsive */
+    .stImage > img {
+        max-width: 100% !important;
+        height: auto !important;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Keep countdown metrics in one row and responsive */
+    .stMetric > div {
+        text-align: center !important;
+        flex: 1 1 0 !important;  /* allow shrinking proportionally */
+        min-width: 60px;         /* prevent metrics from collapsing */
+    }
+
+    .stColumns {
+        display: flex !important;
+        flex-wrap: nowrap !important; /* keep in one row */
+        justify-content: center;
+    }
+
+    /* Make iframe responsive */
+    iframe {
+        width: 100%;
+        max-width: 500px;
+        height: 320px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @media (max-width: 500px) {
+        .stMetric > div {
+            min-width: 40px;  /* allow small screens */
+        }
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
     st.set_page_config(page_title=TITLE, layout="centered")
 
     
@@ -101,13 +153,39 @@ unsafe_allow_html=True
 )
             break
 
-        with placeholder.container():
-            cols = st.columns(6)
-            format_metric(cols[1], countdown["months"], "Months", "💖")
-            format_metric(cols[2], countdown["days"], "Days", "📅")
-            format_metric(cols[3], countdown["hours"], "Hours", "⏰")
-            format_metric(cols[4], countdown["minutes"], "Minutes", "⏱")
-            format_metric(cols[5], countdown["seconds"], "Seconds", "⌛")
+        countdown_html = f"""
+    <div style="
+        display:flex; 
+        justify-content:center; 
+        gap:30px; 
+        flex-wrap: nowrap;
+        font-family: 'Arial', sans-serif;
+        margin-top:20px;
+        margin-bottom:20px;
+    ">
+        <div style="text-align:center;">
+            <div style="font-size:2rem; color:#fff;">{countdown['months']:02d}</div>
+            <div style="color:#fff;">💖 Months</div>
+        </div>
+        <div style="text-align:center;">
+            <div style="font-size:2rem; color:#fff;">{countdown['days']:02d}</div>
+            <div style="color:#fff;">📅 Days</div>
+        </div>
+        <div style="text-align:center;">
+            <div style="font-size:2rem; color:#fff;">{countdown['hours']:02d}</div>
+            <div style="color:#fff;">⏰ Hours</div>
+        </div>
+        <div style="text-align:center;">
+            <div style="font-size:2rem; color:#fff;">{countdown['minutes']:02d}</div>
+            <div style="color:#fff;">⏱ Minutes</div>
+        </div>
+        <div style="text-align:center;">
+            <div style="font-size:2rem; color:#fff;">{countdown['seconds']:02d}</div>
+            <div style="color:#fff;">⌛ Seconds</div>
+        </div>
+    </div>
+    """
+        placeholder.markdown(countdown_html, unsafe_allow_html=True)
 
         time.sleep(1)
 
