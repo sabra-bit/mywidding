@@ -169,7 +169,7 @@ def main():
     map_html = """
         <div style='display:flex; justify-content:center;'>
              <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.123456789!2d31.123456!3d30.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458412b4d42a1c3%3A0x123456789abcdef!2sDar%20Zumuruda%20Mirage%20Hall!5e0!3m2!1sen!2seg!4v1700000000000!5m2!1sen!2seg"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d713.4572357953222!2d31.245209723711024!3d30.106784046199227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458401909243259%3A0x687fb3307fd76ba4!2z2YLYp9i52Ycg2LLZhdix2K_YqSDZhNmE2K3ZgdmE2KfYqg!5e1!3m2!1sar!2seg!4v1763382033537!5m2!1sar!2seg" 
         width="100%" 
         height="400" 
         style="border:0;" 
@@ -224,6 +224,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
