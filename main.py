@@ -155,54 +155,66 @@ unsafe_allow_html=True
 
         countdown_html = f"""
 <style>
-/* Default = dark mode (white text) */
-.count-item-number {{
-    font-size: 2rem;
-    color: #ffffff;
-}}
-.count-item-label {{
-    color: #ffffff;
-    font-size: 0.9rem;
+/* Wrap everything in a protected namespace */
+.countdown-wrapper * {{
+    all: unset;
+    display: revert;
 }}
 
-/* Light mode override */
+/* Container must allow flexbox */
+.countdown-wrapper {{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: nowrap;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}}
+
+/* Default for dark mode */
+.count-num {{
+    font-size: 2.3rem;
+    font-weight: bold;
+    color: #ffffff;
+}}
+.count-label {{
+    font-size: 1rem;
+    color: #ffffff;
+}}
+
+/* Light theme auto override */
 @media (prefers-color-scheme: light) {{
-    .count-item-number {{
+    .count-num {{
         color: #000000 !important;
     }}
-    .count-item-label {{
+    .count-label {{
         color: #000000 !important;
     }}
 }}
 </style>
 
-<div style="
-    display:flex; 
-    justify-content:center; 
-    gap:30px; 
-    flex-wrap: nowrap;
-    margin-top:20px;
-    margin-bottom:20px;
-">
-    <div style="text-align:center;">
-        <div class="count-item-number">{countdown['months']:02d}</div>
-        <div class="count-item-label">💖 Months</div>
+<div class="countdown-wrapper">
+    <div>
+        <div class="count-num">{countdown['months']:02d}</div>
+        <div class="count-label">💖 Months</div>
     </div>
-    <div style="text-align:center;">
-        <div class="count-item-number">{countdown['days']:02d}</div>
-        <div class="count-item-label">📅 Days</div>
+    <div>
+        <div class="count-num">{countdown['days']:02d}</div>
+        <div class="count-label">📅 Days</div>
     </div>
-    <div style="text-align:center;">
-        <div class="count-item-number">{countdown['hours']:02d}</div>
-        <div class="count-item-label">⏰ Hours</div>
+    <div>
+        <div class="count-num">{countdown['hours']:02d}</div>
+        <div class="count-label">⏰ Hours</div>
     </div>
-    <div style="text-align:center;">
-        <div class="count-item-number">{countdown['minutes']:02d}</div>
-        <div class="count-item-label">⏱ Minutes</div>
+    <div>
+        <div class="count-num">{countdown['minutes']:02d}</div>
+        <div class="count-label">⏱ Minutes</div>
     </div>
-    <div style="text-align:center;">
-        <div class="count-item-number">{countdown['seconds']:02d}</div>
-        <div class="count-item-label">⌛ Seconds</div>
+    <div>
+        <div class="count-num">{countdown['seconds']:02d}</div>
+        <div class="count-label">⌛ Seconds</div>
     </div>
 </div>
 """
@@ -215,4 +227,5 @@ unsafe_allow_html=True
 
 if __name__ == "__main__":
     main()
+
 
