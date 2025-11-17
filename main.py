@@ -154,37 +154,58 @@ unsafe_allow_html=True
             break
 
         countdown_html = f"""
-    <div style="
-        display:flex; 
-        justify-content:center; 
-        gap:30px; 
-        flex-wrap: nowrap;
-        font-family: 'Arial', sans-serif;
-        margin-top:20px;
-        margin-bottom:20px;
-    ">
-        <div style="text-align:center;">
-            <div style="font-size:2rem; color:#fff;">{countdown['months']:02d}</div>
-            <div style="color:#fff;">💖 Months</div>
-        </div>
-        <div style="text-align:center;">
-            <div style="font-size:2rem; color:#fff;">{countdown['days']:02d}</div>
-            <div style="color:#fff;">📅 Days</div>
-        </div>
-        <div style="text-align:center;">
-            <div style="font-size:2rem; color:#fff;">{countdown['hours']:02d}</div>
-            <div style="color:#fff;">⏰ Hours</div>
-        </div>
-        <div style="text-align:center;">
-            <div style="font-size:2rem; color:#fff;">{countdown['minutes']:02d}</div>
-            <div style="color:#fff;">⏱ Minutes</div>
-        </div>
-        <div style="text-align:center;">
-            <div style="font-size:2rem; color:#fff;">{countdown['seconds']:02d}</div>
-            <div style="color:#fff;">⌛ Seconds</div>
-        </div>
+<style>
+/* Default = dark mode (white text) */
+.count-item-number {{
+    font-size: 2rem;
+    color: #ffffff;
+}}
+.count-item-label {{
+    color: #ffffff;
+    font-size: 0.9rem;
+}}
+
+/* Light mode override */
+@media (prefers-color-scheme: light) {{
+    .count-item-number {{
+        color: #000000 !important;
+    }}
+    .count-item-label {{
+        color: #000000 !important;
+    }}
+}}
+</style>
+
+<div style="
+    display:flex; 
+    justify-content:center; 
+    gap:30px; 
+    flex-wrap: nowrap;
+    margin-top:20px;
+    margin-bottom:20px;
+">
+    <div style="text-align:center;">
+        <div class="count-item-number">{countdown['months']:02d}</div>
+        <div class="count-item-label">💖 Months</div>
     </div>
-    """
+    <div style="text-align:center;">
+        <div class="count-item-number">{countdown['days']:02d}</div>
+        <div class="count-item-label">📅 Days</div>
+    </div>
+    <div style="text-align:center;">
+        <div class="count-item-number">{countdown['hours']:02d}</div>
+        <div class="count-item-label">⏰ Hours</div>
+    </div>
+    <div style="text-align:center;">
+        <div class="count-item-number">{countdown['minutes']:02d}</div>
+        <div class="count-item-label">⏱ Minutes</div>
+    </div>
+    <div style="text-align:center;">
+        <div class="count-item-number">{countdown['seconds']:02d}</div>
+        <div class="count-item-label">⌛ Seconds</div>
+    </div>
+</div>
+"""
         placeholder.markdown(countdown_html, unsafe_allow_html=True)
 
         time.sleep(1)
@@ -194,3 +215,4 @@ unsafe_allow_html=True
 
 if __name__ == "__main__":
     main()
+
