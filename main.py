@@ -136,6 +136,7 @@ def main():
         <h3 style='text-align:center; color:#4b5563; font-size:1.25rem;'>
         <b>💖 Mohamed & Sara 💖</b> <br>
         Invite you to Celebrate their Love 💍
+        and join them on their Wedding Day.
         <br>
         Friday, {TARGET_DATE.strftime('%B %d, %Y')} at 7:00 PM
         </h3>
@@ -220,3 +221,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
