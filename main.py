@@ -180,65 +180,6 @@ def main():
     """
     components.html(map_html, height=380)
     
-    MP3_FILE_PATH = 'Qasr B3eed.mp3'
-    try:
-        with open(MP3_FILE_PATH, "rb") as f:
-            data = f.read()
-        b64 = base64.b64encode(data).decode()
-        
-        # ----------------------------------------------------
-        # 2. HTML and JavaScript to Embed and Control Autoplay
-        # ----------------------------------------------------
-        # Autoplay is enabled, but muted to comply with browser policy.
-        # The JavaScript function unmuteAndPlay() removes the 'muted' property.
-        html_code = f"""
-       <audio id="myAudio" autoplay loop muted>
-      <source src="data:audio/mp3;base64,{b64}" type="audio/mp3">
-      Your browser does not support the audio element.
-    </audio>
-
-    <script>
-    // This function handles the toggle logic
-    function toggleAudio() {{
-      var audio = document.getElementById('myAudio');
-      var button = document.getElementById('playButton');
-      
-      if (audio) {{
-        // Check if the audio is currently audible (muted=false) and playing (paused=false)
-        if (!audio.muted && !audio.paused) {{
-            // --- Action: Stop/Mute ---
-            audio.muted = true;  // Mute it (good practice before pausing/stopping)
-            audio.pause();       // Pause the playback
-            button.innerText = '▶️ Start Music';
-            button.style.backgroundColor = '#4CAF50'; // Green
-        }} else {{
-            // --- Action: Start/Unmute ---
-            audio.muted = false; // Unmute the audio
-            audio.play();        // Start playback
-            button.innerText = '⏸️ Stop Music';
-            button.style.backgroundColor = '#EF4444'; // Red
-        }}
-      }}
-    }}
-    </script>
-
-    <div style='text-align:center;'>
-        <p style='color:#1F2937; font-weight:bold;'>
-            Music starts silently on page load. Use the button to control it.
-        </p>
-        <button id='playButton' onclick="toggleAudio()" 
-            style='padding: 12px 25px; font-size: 18px; cursor: pointer; background-color: #4CAF50; color: white; border: none; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: background-color 0.3s ease;'>
-            ▶️ Start Music
-        </button>
-    </div>
-        """
-        
-        # Use st.components.v1.html to render the custom HTML
-        components.html(html_code, height=100)
-        
-        st.success("Music is loaded and waiting for your click on the button above!")
-    except FileNotFoundError:
-        st.error(f"**FILE NOT FOUND:** Please create an MP3 file named '{MP3_FILE_PATH}' in the same directory as this script.")
     
     
 
@@ -286,6 +227,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
